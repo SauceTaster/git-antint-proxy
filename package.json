@@ -1,0 +1,42 @@
+{
+  "name": "git-antint-proxy",
+  "version": "0.1.0",
+  "description": "An anti-attribution git proxy: inspect-and-block pushes that leak who (or what) wrote the code — identity, working-time, agentic-tool, prompt, and stylometry signals.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "antint": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./plugin": "./dist/plugin.js"
+  },
+  "files": [
+    "dist",
+    "src/rules/catalog.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').copyFileSync('src/rules/catalog.json','dist/rules/catalog.json')\"",
+    "dev": "tsx src/cli.ts",
+    "antint": "tsx src/cli.ts",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "picomatch": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/picomatch": "^3.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

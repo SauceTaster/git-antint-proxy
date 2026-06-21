@@ -1,0 +1,45 @@
+{
+  "identity": {
+    "name": "Anonymous",
+    "email": "anonymous@users.noreply.github.com",
+    "allow": ["Anonymous <anonymous@users.noreply.github.com>"]
+  },
+  "workingHours": {
+    "mode": "utc",
+    "bucketMinutes": 60,
+    "window": [9, 18],
+    "maxAuthorCommitterSkewSeconds": 300,
+    "maxCommitsPerMinute": 30
+  },
+  "stylometry": {
+    "enforceLf": true,
+    "noTrailingWhitespace": true,
+    "indent": "any",
+    "checkFormatterDrift": false,
+    "formatters": {
+      "**/*.{ts,tsx,js,jsx,json,css,md}": "prettier --stdin-filepath {file}",
+      "**/*.go": "gofmt",
+      "**/*.py": "black -q -",
+      "**/*.rs": "rustfmt --emit stdout"
+    }
+  },
+  "trustFormatters": true,
+  "families": {
+    "identity": true,
+    "temporal": true,
+    "agentic": true,
+    "prompt": true,
+    "stylometry": true
+  },
+  "severityCap": {
+    "identity": "block",
+    "temporal": "warn",
+    "agentic": "block",
+    "prompt": "block",
+    "stylometry": "warn"
+  },
+  "disableRules": [],
+  "allowPaths": ["vendor/**", "third_party/**", "**/*.min.js"],
+  "extraRules": [],
+  "strict": false
+}
